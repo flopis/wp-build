@@ -1,0 +1,51 @@
+﻿1. Įsikeliame naują tuščią temą arba "starter'į" į temų direktoriją ir įjungiame ją iš WP Backend
+	- Prieš kuriant temą: mūsų tikslas atkartoti tokį patį html kodą įterpiant php kodo fragmentus
+	- "Starter'is" kurį galite naudoti: https://degutis.lt/vcs-starter.zip
+		- Pagalbines funkcijas rasite _support kataloge
+		- assets katalogas skirtas css, js, šriftams ir paveikslėliams
+		- elements katalogas skirtas kurtis savo komponentams
+		- templates katalogas skirtas kurtis šablonams
+			- _tpl.php yra pavyzdys kaip susikurti tuščią šabloną
+	- Jeigu pradedate temą kurti nuo nulio
+		- Būtini failai: style.css, kuriame aprašyta visa temos meta informacija ir index.php
+		- Visi likę failai yra papildomi
+		- Plačiau kam skirtas kiekvienas failas: https://codex.wordpress.org/Theme_Development
+		- Naudokitės WP Hierarchija, kad suprastumėte kuris temos failas turi aukštesnį prioritetą
+2. Apsibrėžiame css ir js failus functions.php faile
+3. Apsirašome header.php ir footer.php failus failų sistemoje
+	- Header: HTML dokumento viršutinė dalis iki body atidarymo (imtinai), arba taip kaip apsibrėžėte jūs
+	- Footer: HTML dokumento apatinė dalis nuo body uždarymo (imtinai ir skriptus), arba taip kaip apsibrėžėte jūs
+3. Jeigu jūsų puslapis turi header ir/arba footer dalį (body viduje) - susikurkite site-header.php ir/arba site-footer.php
+failus komponentų kataloge failų sistemoje
+	- Aprašant header ir footer visi dinaminiai tekstai ir paveiksliukai turi eiti iš WP Backend
+	(išnaudokite advanced custom fields plėtinį)
+	- Kai atsiras poreikis išsivesti navigaciją, deklaruokite naują navigaciją functions.php faile failų sistemoje
+	ir apsirašykite ją WP Backend
+	- Temos root direktorijoje esančiuose header ir footer failuose nurodykite pasiimti atitinkamus komponentus
+	- Header ir footer dalis išsiveskite naudodami ACF, navigacijas ir valdiklius (widgets)
+	- Apgalvokite kokie elementai gali pasikartoti: jeigu jie gali pasikartoti - susikurkite atitinkamą
+	kodo dalį kaip komponentą kurį galėsite panaudoti dar kartą
+4. Pirma, susivedame visą mūsų puslapio turinį į WP Backend (einame nuo viršaus į apačią,
+nuo Dashboard į apačią) arba pirma įsivedame vieną puslapį/sekciją į WP Backend ir tuomet pereiname prie
+šablono failų sistemoje
+	- Apgalvojame kokius duomenis (pagal HTML kodą) norėsime išsivesti dinamiškai
+		- Posts (įrašai) skirti blog'ui
+		- Pages (puslapiai) skirti bet kuriam puslapiui ar sekcijai kurią kursime
+		- Custom posts skirti susikurti įrašų grupei, kurie verti atskiros kategorijos
+			- functions.php faile rasite "Custom posts" sekciją, kurioje atkomentuokite 'Testimonials' => 'Testimonial'
+			dalį ir pasikeiskite reikšmes (pirmoji reikšmė - daugiskaita, antroji - vienaskaita)
+			- $slug kintamajame rasite temos pavadinimą 'vcs-starter', jeigu jūsų temos pavadinimas yra kitoks - pasikeiskite
+			jį į savo temos katalogo pavadinimą
+5. Išvedame duomenis iš WP Backend
+	- Naudojamės šablonais (priskiriame šabloną atitinkamam puslapiui) ir WP Hierarchija (išnaudojame WP failus)
+		- Į šabloną susikeliame HTML kodo dalį kurią norėsime atvaizduoti ir atkuriame ją WP ir PHP pagalba
+	- Svarbu atsiminti, kad kiekvienas įrašas ar puslapis turi savo ID
+	- Duomenų išvedimui naudokitės _support kataloge esančia pagalba
+		- post-loop - standartinis WP ciklas, kuris išveda priskirto puslapio informaciją
+		- setup-postdata - išveda puslapio informaciją pagal ID
+		- wp-query - išveda, bet kokio puslapio informaciją ir patogus išvesti "custom posts"
+	- Standartinės funkcijos išvedant puslapio duomenis
+		- the_title() išveda antraštę
+		- the_content() išveda tekstinio bloko dalį
+		- the_permalink() išveda puslapio url
+		- Papildomų funkcijų ieškokite https://developer.wordpress.org/reference/, _reference.php ir google

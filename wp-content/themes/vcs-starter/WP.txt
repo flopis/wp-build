@@ -1,0 +1,12 @@
+﻿VCS Starter - https://degutis.lt/vcs-starter.zip
+Wordpress hierarchija - https://wphierarchy.com/
+Temos kūrimas - https://codex.wordpress.org/Theme_Development
+
+Wordpress įskiepiai:
+- Advanced Custom Fields
+- WP Migrate DB
+- Yoast SEO
+- Contact Form 7
+- Intuitive Custom Post Order
+- Regenerate Thumbnails
+- Widget CSS Classes
